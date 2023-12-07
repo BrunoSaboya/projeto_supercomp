@@ -1,0 +1,48 @@
+Função HeuristicaCliqueMaxima(grafo):
+    cliqueMaxima = ListaVazia()
+    grauDosVertices = CalcularGrauDosVertices(grafo)
+
+    Enquanto houver vértices no grafo:
+        v = VérticeComMaiorGrau(grauDosVertices)
+        cliqueAtual = EncontrarClique(grafo, v)
+
+        Se O Tamanho de cliqueAtual > O Tamanho de cliqueMaxima:
+            cliqueMaxima = cliqueAtual
+
+        Remover v e seus vizinhos do grafo
+        Atualizar grauDosVertices
+
+    Retornar cliqueMaxima
+Fim Função
+
+Função CalcularGrauDosVertices(grafo):
+    grauDosVertices = DicionárioVazio()
+
+    Para cada vértice v no grafo:
+        grauDosVertices[v] = GrauDoVértice(grafo, v)
+
+    Retornar grauDosVertices
+Fim Função
+
+Função GrauDoVértice(grafo, v):
+    Retorna a soma dos valores na linha v da matriz de adjacência (grau do vértice)
+Fim Função
+
+Função VérticeComMaiorGrau(grauDosVertices):
+    Retorna o vértice com o maior valor no dicionário grauDosVertices
+Fim Função
+
+Função EncontrarClique(grafo, v):
+    clique = [v]
+
+    Para cada u vizinho de v no grafo:
+        Se u não está em clique:
+            Adicionar u a clique
+
+    Retornar clique
+Fim Função
+
+
+/// Essa heurística seleciona inicialmente o vértice de maior grau e constrói cliques removendo vértices e seus vizinhos do grafo. 
+/// Isso pode evitar a busca exaustiva, mas ainda é uma abordagem heurística e pode não garantir sempre a clique máxima.
+/// A poda ocorre ao remover vértices e seus vizinhos do grafo, reduzindo o tamanho do problema.
