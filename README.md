@@ -1,4 +1,4 @@
-# projeto_supercomp
+# Projeto SuperComp
 
 Produzido por: Bruno Boldrim Saboya
 
